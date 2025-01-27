@@ -1,0 +1,36 @@
+Verilog Reporting Mechanisms
+  
+Understanding the differences between $write, $display, $strobe, and $monitor is key to effective debugging and simulation. Here's a quick breakdown:
+
+$write
+
+Purpose: Prints text without appending a newline (\n) at the end.
+Use Case: Best for continuous printing in the same line.
+    
+Example:
+$write("Simulation time: %0t", $time);
+    
+$display
+
+Purpose: Prints text and appends a newline (\n) automatically.
+Use Case: Commonly used for general-purpose logging.
+    
+Example:
+$display("Simulation time: %0t", $time);
+
+$strobe
+
+Purpose: Prints the final value of variables at the end of the current simulation time step.
+Use Case: Useful when variable values may change during the simulation step but only the final value is needed.
+    
+Example:
+$strobe("Final value at time %0t: var = %0d", $time, var);
+
+$monitor
+
+Purpose: Continuously monitors and prints whenever the monitored variable changes.
+Use Case: Ideal for tracking dynamic changes in signals or variables.
+Note: Use $monitoroff to disable it.
+    
+Example:
+$monitor("Time: %0t, Signal = %0d", $time, signal);
